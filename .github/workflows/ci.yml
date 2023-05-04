@@ -1,0 +1,25 @@
+name: Python Test
+
+on: [push]
+
+jobs:
+  ci-tests:
+    strategy:
+      fail-fast: false
+      matrix:
+        version: ["2.7","3.9"]
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Install PY
+      run: sudo apt update && sudo apt install -y python${{ matrix.version }}
+
+    - name: Check PY version
+      run: |
+        python${{ matrix.version }} --version
+    
+    - name: Run code
+      run: |
+        python${{ matrix.version }} draw.py

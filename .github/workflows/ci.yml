@@ -7,7 +7,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        version: ["2.7","3"]
+        version: ["2.7","3.1"]
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
